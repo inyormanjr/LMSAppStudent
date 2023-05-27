@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainViewComponent } from './main-view/main-view.component';
 import { RouterModule, Routes } from '@angular/router';
+import { NavNotificationComponent } from './components/nav-notification/nav-notification.component';
 
 
 const route: Routes = [
@@ -29,7 +30,8 @@ const route: Routes = [
 ];
 @NgModule({
   declarations: [
-    MainViewComponent
+    MainViewComponent,
+    NavNotificationComponent
   ],
   imports: [
     CommonModule,
