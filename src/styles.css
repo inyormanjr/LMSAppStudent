@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #C8CEEA !important;
+}
+
+
+.neo-input {
+    background: linear-gradient(145deg, #ACB1C9, #E4EBFF);
+    border-radius: 10%;
+    box-shadow: inset 12.61px 12.61px 39px #ADB2CA, inset -12.61px -12.61px 39px #E3EAFF;
+}
+
+.neo-btn {
+  background: linear-gradient(145deg, #EDF4FF, #A3A8BF);
+  border: 0 !important;
+  box-shadow: 6.01px 6.01px 75px #989DB2, -6.01px -6.01px 75px #F8FFFF;
+}
+
+.card {
+  background: linear-gradient(145deg, #A2A6BD, #EFF6FF);
+    border-radius: 15%;
+    box-shadow: 6.01px 6.01px 11px #989DB2, -6.01px -6.01px 11px #F8FFFF;
+}

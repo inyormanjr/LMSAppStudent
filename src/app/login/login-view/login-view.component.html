@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center min-vh-100">
+
+    <div class="col-md-6 d-flex flex-row justify-content-center">
+      <div class="card bg-transparent border-0">
+        <div class="card-header">
+
+          <h1 class="text-center text-white  mb-5">CCSCAI LMS</h1>
+          <h4 class="text-white">Student Credentials</h4>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="username" class="form-label text-white">Username</label>
+              <input type="text" [(ngModel)]="username" name="username" class="form-control neo-input" id="username" placeholder="Enter your username">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label text-white">Password</label>
+              <input type="password" [(ngModel)]="password" name="password" class="form-control neo-input" id="password" placeholder="Enter your password">
+            </div>
+            <div class="container-fluid d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary mb-2 neo-btn text-white ">Login</button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
