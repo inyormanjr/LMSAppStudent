@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { clearCurrentUser, setCurrentUser, setLoaded, setLoading } from '../actions/main-feature.actions';
 import { loginSuccess, logoutSuccess } from '../actions/auth.actions';
-import { UserModel } from 'src/app/models/user.model';
+import { UserTokenDecodedModel } from 'src/app/models/user.decoded.model';
 
 export const isLoadingReducer = createReducer<boolean>(
   false,
@@ -9,7 +9,7 @@ export const isLoadingReducer = createReducer<boolean>(
   on(setLoaded, () => false)
 );
 
-export const currentUserReducer = createReducer<UserModel | null>(
+export const currentUserReducer = createReducer<UserTokenDecodedModel | null>(
   null,
   on(setCurrentUser, (_, { user }) => user),
   on(clearCurrentUser, () => null),

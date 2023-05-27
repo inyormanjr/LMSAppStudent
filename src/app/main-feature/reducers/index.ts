@@ -7,13 +7,13 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { currentUserReducer, isLoadingReducer } from './main-feature.action.reducers';
-import { UserModel } from 'src/app/models/user.model';
+import { UserTokenDecodedModel } from 'src/app/models/user.decoded.model';
 
 export const mainStoreFeatureKey = 'mainStore';
 
 export interface MainStoreState {
   isLoading: boolean;
-  currentUser: UserModel | null;
+  currentUser: UserTokenDecodedModel | null;
 }
 
 export const mainAppReducers: ActionReducerMap<MainStoreState> = {

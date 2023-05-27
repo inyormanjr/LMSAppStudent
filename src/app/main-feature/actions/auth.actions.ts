@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { UserTokenDecodedModel } from 'src/app/models/user.decoded.model';
 import { UserModel } from 'src/app/models/user.model';
 
 export const login = createAction(
@@ -7,7 +8,7 @@ export const login = createAction(
 );
 export const loginSuccess = createAction(
   '[Auth] Login Success',
-  props<{ user: UserModel }>()
+  props<{ user: UserTokenDecodedModel }>()
 );
 export const loginFailure = createAction(
   '[Auth] Login Failure',

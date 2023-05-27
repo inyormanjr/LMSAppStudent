@@ -10,9 +10,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './main-feature/effects/auth.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { user_token_storage } from './cons.vars';
+import { environment } from 'src/environments/environment';
 
 export function tokenGetter() {
-  const token = localStorage.getItem('auth-user');
+  const token = localStorage.getItem(user_token_storage);
   console.log(token);
   return token;
 }
@@ -25,8 +27,8 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        allowedDomains: ['http://localhost:5001'],
-        disallowedRoutes: ['http://localhost:5001/api/v1/auth'],
+        allowedDomains: [`${environment.allowedDomain}`],
+        disallowedRoutes: [`${environment.disallowedRoutes}`],
       },
     }),
     StoreModule.forRoot({}),

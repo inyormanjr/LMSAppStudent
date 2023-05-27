@@ -16,17 +16,8 @@ export class LoginViewComponent {
   constructor(private store: Store<MainStoreState>, private router: Router) {}
 
   onSubmit() {
-    this.store.dispatch(
-      login({ username: this.username, password: this.password })
-    );
-
-    this.store
-      .select((state) => state.currentUser)
-      .subscribe((currentUser) => {
-        if (currentUser) {
-          // Redirect to the desired route on successful login
-          this.router.navigate(['/dashboard']);
-        }
-      });
+   this.store.dispatch(
+     login({ username: this.username, password: this.password })
+   );
   }
 }
