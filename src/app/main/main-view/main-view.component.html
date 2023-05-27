@@ -20,7 +20,7 @@
       <button class="btn btn-secondary bg-transparent text-dark dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown"
         aria-expanded="false">
         <img src="https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-260nw-1714666150.jpg" height="35" width="35" alt="Profile Image" class="profile-image rounded-circle">
-        john.doe@example.com
+        {{(this.currentUser$ | async)?.username }}
       </button>
         <ul class="dropdown-menu" aria-labelledby="profileDropdown">
           <li><a class="dropdown-item" href="#">Profile</a></li>

@@ -1,5 +1,5 @@
 <div class="container pt-4 d-flex flex-column h-100">
-  <h5 class="display-4 mb-4">Welcome back, <strong>James L.</strong> </h5>
+  <h5 class="display-4 mb-4">Welcome back, <strong>{{(this.currentUser$ | async)?.lastName }},{{(this.currentUser$ | async)?.firstName }}</strong> </h5>
   <div class="container-fluid">
     <ul class="nav nav-tabs mb-3">
       <li class="nav-item">
@@ -7,7 +7,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="tab" href="#announcements"><i class="bi bi-megaphone"></i> Announcements </a>
-       
+
       </li>
     </ul>
     <div class="tab-content">
