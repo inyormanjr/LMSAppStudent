@@ -1,0 +1,20 @@
+<div class="container card bg-transparent border-dark h-100 p-3">
+  <h5 class="p-0 m-0"><i class="bi bi-book me-2"></i> Courses List</h5>
+  <small class="text-muted p-0 m-0 mb-2">Your recent courses</small>
+  <div class="list-group border-0 mb-auto">
+    <a href="#" class="list-group-item bg-transparent list-group-item-action" *ngFor="let course of courses">
+      <div class="d-flex justify-content-between">
+        <div>
+          <h5 class="p-0 m-0" style="font-size: 14px;">{{ course.courseCode }}</h5>
+          <small class="text-muted" style="font-size: 12px;">{{course.course}} - {{course.instructor.name}}</small>
+        </div>
+        <button class="btn btn-link" (click)="viewDetails(course.courseId)">
+          <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+    </a>
+  </div>
+  <div class="text-end mt-4 ">
+    <a class="" href="#">View All</a>
+  </div>
+</div>
