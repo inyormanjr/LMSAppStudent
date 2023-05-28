@@ -11,12 +11,20 @@ export const isLoadingReducer = createReducer<Boolean>(
 );
 
 // Create the reducer
-export const courseReducer = createReducer<Course[]>(
+export const coursesReducer = createReducer<Course[]>(
   [],
-  on(CourseActions.loadCourseActionsSuccess, (_, { courses }) => courses),
-  on(CourseActions.loadCourseActionsFailure, (state, { error }) => {
-    // Handle the failure case, such as displaying an error message
+  on(CourseActions.loadCoursesActionsSuccess, (_, { courses }) => courses),
+  on(CourseActions.loadCoursesActionsFailure, (state, { error }) => {
     console.error('Error loading courses:', error);
     return state;
   }),
+);
+
+export const courseReducer = createReducer<Course | null>(
+  null,
+  on(CourseActions.loadCourseActionsSuccess, (_, { course }) => course),
+  on(CourseActions.loadCourseActionsFailure, (state, { error }) => {
+    console.error('Error loading course:', error);
+    return state;
+  })
 );

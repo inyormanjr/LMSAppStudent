@@ -27,7 +27,7 @@ export class CoursesViewComponent {
     this.currentUser$ = this.mainStore.select(selectCurrentUser);
     this.currentUser$.subscribe((x) => {
       this.store.dispatch(
-        CourseActions.loadCourseActions({ studentId: x?.id })
+        CourseActions.loadCoursesActions({ studentId: x?.id })
       );
     });
 

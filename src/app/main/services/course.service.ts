@@ -8,9 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class CourseService {
-  getCourses() {
-    throw new Error('Method not implemented.');
-  }
+  
   constructor(private http: HttpClient) {}
   private baseUrl = environment.api_uri; // Replace with your API base URL
 
@@ -19,4 +17,19 @@ export class CourseService {
     return this.http.get<Course[]>(url);
   }
 
+  getCoursesByStudentIdAndParams(
+    studentId: string,
+    courseCode: string
+  ): Observable<Course[]> {
+    const url = `${this.baseUrl}/students/${studentId}/courses?courseCode=${courseCode}`;
+    return this.http.get<Course[]>(url);
+  }
+
+  getCourseByIdAndStudentId(
+    studentId: string,
+    courseId: string
+  ): Observable<Course> {
+    const url = `${this.baseUrl}/students/${studentId}/courses/${courseId}`;
+    return this.http.get<Course>(url);
+  }
 }

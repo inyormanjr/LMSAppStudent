@@ -4,8 +4,6 @@ export interface Course {
   course: string;
   courseStatus: string;
   instructor: Instructor;
-  discussionCount: number;
-  assessmentCount: number;
 }
 
 export interface Instructor {
