@@ -1,14 +1,13 @@
-export interface Course {
+export interface CourseWithStats {
   courseId: string;
   courseCode: string;
   course: string;
   courseStatus: string;
-  instructor: Instructor;
+  instructor: {
+    instructorId: string;
+    name: string;
+    email: string;
+  };
   discussionCount: number;
   assessmentCount: number;
-}
-
-export interface Instructor {
-  name: string;
-  email: string;
 }

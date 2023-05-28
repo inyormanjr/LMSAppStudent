@@ -1,1 +1,53 @@
-<p>courses-view works!</p>
+<div class="container">
+  <h1 class="my-4">Course View</h1>
+
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <div class="input-group">
+        <label for="termSelect" class="input-group-text">Term:</label>
+        <select class="form-select" id="termSelect">
+          <option value="term1">Term 1</option>
+          <option value="term2">Term 2</option>
+          <option value="term3">Term 3</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search by course name">
+        <button class="btn btn-primary" type="button">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Course Code</th>
+        <th>Course</th>
+        <th>Status</th>
+        <th>Instructor</th>
+        <th>Discussions</th>
+        <th>Assessments</th>
+        <th class="text-end">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses$ | async">
+        <td>{{ course.courseCode }}</td>
+        <td>{{ course.course }}</td>
+        <td>
+          <span class="badge bg-success">{{ course.courseStatus }}</span>
+        </td>
+        <td>{{ course.instructor.name }}</td>
+        <td>{{ course.discussionCount }}</td>
+        <td>{{ course.assessmentCount }}</td>
+        <td class="text-end">
+          <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#previewModal">
+            <span class="bi bi-eye"></span> Preview
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -8,6 +8,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class CourseService {
+  getCourses() {
+    throw new Error('Method not implemented.');
+  }
   constructor(private http: HttpClient) {}
   private baseUrl = environment.api_uri; // Replace with your API base URL
 
