@@ -40,8 +40,8 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/register`, registerData);
   }
 
-  logout(): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/logout`, null);
+  logout() {
+    localStorage.clear();
   }
 
   getCurrentUser(): Observable<any> {

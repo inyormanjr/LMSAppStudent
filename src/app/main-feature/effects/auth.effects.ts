@@ -53,17 +53,17 @@ export class AuthEffects {
     )
   );
 
-  logout$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(logout),
-      exhaustMap(() =>
-        this.authService.logout().pipe(
-          map(() => logoutSuccess()),
-          catchError((error) => of(logoutFailure({ error })))
-        )
-      )
-    )
-  );
+  // logout$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(logout),
+  //     exhaustMap(() =>
+  //       this.authService.logout().pipe(
+  //         map(() => logoutSuccess()),
+  //         catchError((error) => of(logoutFailure({ error })))
+  //       )
+  //     )
+  //   )
+  // );
 
   constructor(
     private actions$: Actions,
