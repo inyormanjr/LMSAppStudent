@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MainViewComponent } from './main-view/main-view.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NavNotificationComponent } from './components/nav-notification/nav-notification.component';
+import { CourseListCardComponent } from './features/dashboard/components/course-list-card/course-list-card.component';
 
 
 const route: Routes = [
@@ -31,7 +32,7 @@ const route: Routes = [
 @NgModule({
   declarations: [
     MainViewComponent,
-    NavNotificationComponent
+    NavNotificationComponent,
   ],
   imports: [
     CommonModule,

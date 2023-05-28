@@ -19,7 +19,7 @@ html, body {
   box-shadow: 6.01px 6.01px 75px #989DB2, -6.01px -6.01px 75px #F8FFFF;
 }
 
-.card {
+.neo-card {
   background: linear-gradient(145deg, #A2A6BD, #EFF6FF);
     border-radius: 15%;
     box-shadow: 6.01px 6.01px 11px #989DB2, -6.01px -6.01px 11px #F8FFFF;
