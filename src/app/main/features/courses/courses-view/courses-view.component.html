@@ -26,9 +26,6 @@
         <th>Course Code</th>
         <th>Course</th>
         <th>Status</th>
-        <th>Instructor</th>
-        <th>Discussions</th>
-        <th>Assessments</th>
         <th class="text-end">Action</th>
       </tr>
     </thead>
@@ -39,15 +36,68 @@
         <td>
           <span class="badge bg-success">{{ course.courseStatus }}</span>
         </td>
-        <td>{{ course.instructor.name }}</td>
-        <td>{{ course.discussionCount }}</td>
-        <td>{{ course.assessmentCount }}</td>
         <td class="text-end">
-          <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#previewModal">
+          <button class="btn btn-primary btn-sm me-2" (click)="openPreviewModal(course)" data-bs-toggle="modal" data-bs-target="#previewModal">
             <span class="bi bi-eye"></span> Preview
           </button>
+            <button class="btn btn-success btn-sm" >
+
+              <span class="bi bi-play"></span>Start
+            </button>
         </td>
       </tr>
     </tbody>
   </table>
+
+
 </div>
+  <!-- Preview Modal -->
+<div *ngIf="selectedCourse" class="modal fade custom-modal" id="previewModal" tabindex="-1"
+  aria-labelledby="previewModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="previewModalLabel">Course Preview</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="fw-bold mb-2">Course Code</div>
+            <div>{{ selectedCourse.courseCode }}</div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="fw-bold mb-2">Course</div>
+            <div>{{ selectedCourse.course }}</div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="fw-bold mb-2">Instructor</div>
+            <div>{{ selectedCourse.instructor.name }}</div>
+            <div class="text-muted"><i class="bi bi-envelope me-2"></i>{{ selectedCourse.instructor.email }}</div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="fw-bold mb-2">Course Status</div>
+            <div>{{ selectedCourse.courseStatus }}</div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="fw-bold mb-2">Discussions</div>
+            <div>{{ selectedCourse.discussionCount }}</div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="fw-bold mb-2">Assessments</div>
+            <div>{{ selectedCourse.assessmentCount }}</div>
+          </div>
+        </div>
+        <!-- Add more details as needed -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

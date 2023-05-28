@@ -16,10 +16,10 @@ import { CourseSelectors } from '../ngrx/selectors/courses-selector.selectors';
   styleUrls: ['./courses-view.component.css'],
 })
 export class CoursesViewComponent {
-
-
   courses$: Observable<Course[]>;
   currentUser$: Observable<UserTokenDecodedModel | null>;
+  selectedCourse: any; // Variable to hold the selected course
+
   constructor(
     private store: Store<CoursesState>,
     private mainStore: Store<MainStoreState>
@@ -32,5 +32,9 @@ export class CoursesViewComponent {
     });
 
     this.courses$ = this.store.select(CourseSelectors.courses);
+  }
+
+  openPreviewModal(course: any) {
+    this.selectedCourse = course; // Set the selected course
   }
 }

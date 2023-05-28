@@ -6,12 +6,17 @@ import { StoreModule } from '@ngrx/store';
 import * as fromCourseStore from './ngrx/reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { CourseViewEffectEffects } from './ngrx/effects/course-view-effect.effects';
+import { CourseDetailViewComponent } from './course-detail-view/course-detail-view.component';
 
-const route: Routes = [{path: '', component: CoursesViewComponent}];
+const route: Routes = [
+  { path: '', component: CoursesViewComponent },
+  { path: ':courseId/course', component: CourseDetailViewComponent },
+];
 
 @NgModule({
   declarations: [
-    CoursesViewComponent
+    CoursesViewComponent,
+    CourseDetailViewComponent
   ],
   imports: [
     CommonModule,

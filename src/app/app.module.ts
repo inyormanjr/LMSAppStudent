@@ -16,7 +16,6 @@ import { AuthGuard } from './guards/auth.guard';
 
 export function tokenGetter() {
   const token = localStorage.getItem(user_token_storage);
-  console.log(token);
   return token;
 }
 @NgModule({
