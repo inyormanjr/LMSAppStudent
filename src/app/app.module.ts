@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { user_token_storage } from './cons.vars';
 import { environment } from 'src/environments/environment';
+import { AuthGuard } from './guards/auth.guard';
 
 export function tokenGetter() {
   const token = localStorage.getItem(user_token_storage);
@@ -42,7 +43,7 @@ export function tokenGetter() {
     }),
     EffectsModule.forRoot([AuthEffects]),
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
