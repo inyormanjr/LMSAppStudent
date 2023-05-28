@@ -40,7 +40,7 @@
           <button class="btn btn-primary btn-sm me-2" (click)="openPreviewModal(course)" data-bs-toggle="modal" data-bs-target="#previewModal">
             <span class="bi bi-eye"></span> Preview
           </button>
-            <button class="btn btn-success btn-sm" >
+            <button class="btn btn-success btn-sm" [routerLink]="[course.courseId,'course']" >
 
               <span class="bi bi-play"></span>Start
             </button>
