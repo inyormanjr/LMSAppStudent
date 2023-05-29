@@ -12,7 +12,7 @@ export class CourseViewEffectEffects {
     this.actions$.pipe(
       ofType(CourseActions.loadCoursesActions),
       mergeMap(({ studentId }) =>
-        this.courseService.getCoursesByStudentId(studentId).pipe(
+        this.courseService.getCoursesByStudentId().pipe(
           map((courses) =>
             CourseActions.loadCoursesActionsSuccess({ courses })
           ),
@@ -27,9 +27,9 @@ export class CourseViewEffectEffects {
   loadCoursesByStudentIdAndParams$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CourseActions.loadCoursesByStudentIdAndParams),
-      mergeMap(({ studentId, courseCode }) =>
+      mergeMap(({  courseCode }) =>
         this.courseService
-          .getCoursesByStudentIdAndParams(studentId, courseCode)
+          .getCoursesByStudentIdAndParams(courseCode)
           .pipe(
             map((courses) =>
               CourseActions.loadCoursesActionsSuccess({ courses })
@@ -47,8 +47,8 @@ export class CourseViewEffectEffects {
   loadCourseByIdAndStudentId$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CourseActions.loadCourseActions),
-      mergeMap(({ studentId, courseId }) =>
-        this.courseService.getCourseByIdAndStudentId(studentId, courseId).pipe(
+      mergeMap(({ courseId }) =>
+        this.courseService.getCourseById(courseId).pipe(
           map((course) =>
             CourseActions.loadCourseActionsSuccess({ course })
           ),

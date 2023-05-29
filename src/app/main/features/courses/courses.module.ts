@@ -7,10 +7,15 @@ import * as fromCourseStore from './ngrx/reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { CourseViewEffectEffects } from './ngrx/effects/course-view-effect.effects';
 import { CourseDetailViewComponent } from './course-detail-view/course-detail-view.component';
+import { CourseDetailResolver } from './resolvers/course-detail.resolver';
 
 const route: Routes = [
   { path: '', component: CoursesViewComponent },
-  { path: ':courseId/course', component: CourseDetailViewComponent },
+  {
+    path: ':courseId/course',
+    component: CourseDetailViewComponent,
+    resolve: { course: CourseDetailResolver },
+  },
 ];
 
 @NgModule({
@@ -18,11 +23,12 @@ const route: Routes = [
     CoursesViewComponent,
     CourseDetailViewComponent
   ],
+  providers: [CourseDetailResolver],
   imports: [
     CommonModule,
     RouterModule.forChild(route),
     StoreModule.forFeature(fromCourseStore.courseStoreFeatureKey, fromCourseStore.reducers, { metaReducers: fromCourseStore.metaReducers }),
     EffectsModule.forFeature([CourseViewEffectEffects])
-  ]
+  ],
 })
 export class CoursesModule { }

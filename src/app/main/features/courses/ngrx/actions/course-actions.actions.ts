@@ -5,33 +5,33 @@ export const setLoading = createAction('[Course View] Set Loading');
 export const setLoaded = createAction('[Course View] Set Loaded');
 
 export const loadCoursesActions = createAction(
-  '[CourseActions] Load CoursesActions',
+  '[Course View] Load CoursesActions',
   props<{ studentId: string }>()
 );
 
 export const loadCoursesByStudentIdAndParams = createAction(
-  '[CoursesActions] Load CourseActions',
-  props<{ studentId: string, courseCode: string }>()
+  '[Course View] Load CourseActions',
+  props<{  courseCode: string }>()
 );
 export const loadCoursesActionsSuccess = createAction(
-  '[CoursesActions] Load CourseActions Success',
+  '[Course View] Load CourseActions Success',
   props<{ courses: Course[] }>()
 );
 export const loadCoursesActionsFailure = createAction(
-  '[CoursesActions] Load CourseActions Failure',
+  '[Course View] Load CourseActions Failure',
   props<{ error: any }>()
 );
 
 export const loadCourseActions = createAction(
-  '[CourseActions] Load CourseActions',
-  props<{ studentId: string , courseId: string}>()
+  '[Course View] Load CourseActions',
+  props<{  courseId: string }>()
 );
 export const loadCourseActionsSuccess = createAction(
-  '[CourseActions] Load CourseActions Success',
-  props<{ course: Course}>()
+  '[Course View] Load CourseActions Success',
+  props<{ course: Course }>()
 );
 export const loadCourseActionsFailure = createAction(
-  '[CourseActions] Load CourseActions Failure',
+  '[Course View] Load CourseActions Failure',
   props<{ error: any }>()
 );
 
