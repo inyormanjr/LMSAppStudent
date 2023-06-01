@@ -3,9 +3,9 @@
     <div class="card-body d-flex flex-column overflow-auto">
       <h3 class="card-title mb-3">({{moduleDiscussionResult.courseName}}) {{moduleDiscussionResult.moduleName}}</h3>
       <div class="content bg-dark text-white rounded p-4 flex-fill h-100 overflow-auto">
-        <div class="discussion-container" *ngIf="!showExercise">
+        <div class="discussion-container h-100 flex-fill d-flex flex-column" *ngIf="!showExercise">
           <h5 class="discussion-title">{{ moduleDiscussionResult.discussion.title }}</h5>
-          <p class="discussion-content text-wrap">{{ moduleDiscussionResult.discussion.discussion }}</p>
+          <textarea readonly style="width: 100%; height: 100%; background-color: transparent; color: white;" class="discussion-content p-3">{{ moduleDiscussionResult.discussion.discussion }}</textarea>
         </div>
 
         <div class="exercise-container  h-100 d-flex flex-column justify-content-between" *ngIf="showExercise">
