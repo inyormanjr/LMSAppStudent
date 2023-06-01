@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { Course } from '../models/course';
 import { environment } from 'src/environments/environment';
 import { Module } from '../models/module';
-import { Exercise } from '../models/course.details';
+import { Discussion, Exercise } from '../models/course.details';
+import { ModuleDiscussionResult } from '../models/module.discussion.result';
 
 @Injectable({
   providedIn: 'root',
@@ -18,16 +19,12 @@ export class CourseService {
     return this.http.get<Course[]>(url);
   }
 
-  getCoursesByStudentIdAndParams(
-    courseCode: string
-  ): Observable<Course[]> {
+  getCoursesByStudentIdAndParams(courseCode: string): Observable<Course[]> {
     const url = `${this.baseUrl}/students/courses?courseCode=${courseCode}`;
     return this.http.get<Course[]>(url);
   }
 
-  getCourseById(
-    courseId: string
-  ): Observable<Course> {
+  getCourseById(courseId: string): Observable<Course> {
     const url = `${this.baseUrl}/students/courses/${courseId}`;
     return this.http.get<Course>(url);
   }
@@ -40,5 +37,13 @@ export class CourseService {
   getExerciseByDiscussionId(id: string): Observable<Exercise> {
     const url = `${this.baseUrl}/students/course/discussion/${id}/exercise`;
     return this.http.get<Exercise>(url);
+  }
+
+  getModuleDiscussionByPage(
+    moduleId: string,
+    page: number
+  ): Observable<ModuleDiscussionResult> {
+    const url = `${this.baseUrl}/students/course/module/${moduleId}/discussion/page/${page}`;
+    return this.http.get<ModuleDiscussionResult>(url);
   }
 }

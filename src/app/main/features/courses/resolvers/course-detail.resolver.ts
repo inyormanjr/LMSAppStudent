@@ -6,10 +6,6 @@ import {
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Course } from 'src/app/main/models/course';
-import { CoursesState } from '../ngrx/reducers';
-import { Store } from '@ngrx/store';
-import { CourseActions } from '../ngrx/actions/course-actions.actions';
-import { CourseSelectors } from '../ngrx/selectors/courses-selector.selectors';
 import { catchError, map } from 'rxjs/operators';
 import { CourseService } from 'src/app/main/services/course.service';
 

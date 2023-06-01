@@ -1,0 +1,38 @@
+<div *ngIf="moduleDiscussionResult" class="container-fluid h-100 p-3">
+  <div class="card d-flex neo-card rounded flex-column h-100">
+    <div class="card-body d-flex flex-column overflow-auto">
+      <h3 class="card-title mb-3">({{moduleDiscussionResult.courseName}}) {{moduleDiscussionResult.moduleName}}</h3>
+      <div class="content bg-dark text-white rounded p-4 flex-fill h-100 overflow-auto">
+        <div class="discussion-container" *ngIf="!showExercise">
+          <h5 class="discussion-title">{{ moduleDiscussionResult.discussion.title }}</h5>
+          <p class="discussion-content text-wrap">{{ moduleDiscussionResult.discussion.discussion }}</p>
+        </div>
+
+        <div class="exercise-container  h-100 d-flex flex-column justify-content-between" *ngIf="showExercise">
+          <div>
+            <div class="d-flex justify-content-between">
+              <h5 class="exercise-title">{{ exercise.exerciseName }}</h5>
+              <span class="text-danger">
+                <p>{{ exercise.points }} Points</p>
+              </span>
+            </div>
+            <p class="exercise-question">{{ exercise.instructions }}</p>
+          </div>
+          <textarea class="form-control exercise-answer" rows="7" placeholder="Type your answer here"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="actions d-flex justify-content-end mb-3 me-2">
+
+      <button class="btn btn-secondary me-2" (click)="toggleExerciseContent()">
+        {{ showExercise ? 'Show Discussion' : 'Show Exercise' }}
+      </button>
+      <button [disabled]="moduleDiscussionResult.previousPage == null" class="btn btn-success me-2" [routerLink]="['../../../../module',moduleDiscussionResult.moduleId,'discussion',moduleDiscussionResult.previousPage]"  >
+        Previous
+      </button>
+        <button [disabled]="moduleDiscussionResult.nextPage == null" class="btn btn-success me-2" [routerLink]="['../../../../module',moduleDiscussionResult.moduleId,'discussion',moduleDiscussionResult.nextPage]"  >
+          Next
+        </button>
+    </div>
+  </div>
+</div>

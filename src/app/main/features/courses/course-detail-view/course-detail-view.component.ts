@@ -8,6 +8,8 @@ import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router'
 import { CourseSelectors } from '../ngrx/selectors/courses-selector.selectors';
 import { Module } from 'src/app/main/models/module';
 import { CourseService } from 'src/app/main/services/course.service';
+import { ModalService } from 'src/app/services/modal.service';
+import { DiscussionViewerSingleComponent } from '../discussion-viewer-single/discussion-viewer-single.component';
 
 @Component({
   selector: 'app-course-detail-view',
@@ -25,7 +27,7 @@ export class CourseDetailViewComponent implements OnInit {
     private route: ActivatedRoute,
     private courseService: CourseService,
     private store: Store<CoursesState>,
-    private mainStore: Store<MainStoreState>
+    private mainStore: Store<MainStoreState>,
   ) {
     this.selectedCourse$ = this.store.select(CourseSelectors.selectedCourse);
     const res = route.data.subscribe((data) => {

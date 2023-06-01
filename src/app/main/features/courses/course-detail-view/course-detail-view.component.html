@@ -52,7 +52,7 @@
           <div class="tab-pane fade show active" [id]="'discussions-' + i" role="tabpanel"
             [attr.aria-labelledby]="'discussions-tab-' + i" *ngIf="module.discussions">
             <div class="list-group">
-              <a href="#" class="list-group-item border-white bg-transparent list-group-item-action"
+              <button [routerLink]="['../../module',module._id,'discussion',discussion.page]" class="list-group-item border-white bg-transparent list-group-item-action"
                 *ngFor="let discussion of module.discussions">
                 <div class="d-flex justify-content-between align-items-center">
                   <h6 class="mb-0">{{ discussion.title }}</h6>
@@ -60,7 +60,7 @@
                     <i class="bi bi-arrow-right"></i>
                   </button>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
 
@@ -98,4 +98,5 @@
       </div>
     </ng-container>
   </div>
+
 </div>
