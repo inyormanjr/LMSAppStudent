@@ -11,6 +11,7 @@ import { CourseDetailResolver } from './resolvers/course-detail.resolver';
 import { DiscussionViewerComponent } from './discussion-viewer/discussion-viewer.component';
 import { DiscussionsComponent } from './discussions/discussions.component';
 import { DiscussionViewerSingleComponent } from './discussion-viewer-single/discussion-viewer-single.component';
+import { AnswerableSectionComponent } from './components/answerable-section/answerable-section.component';
 
 const route: Routes = [
   { path: '', component: CoursesViewComponent },
@@ -29,7 +30,8 @@ const route: Routes = [
     CourseDetailViewComponent,
     DiscussionViewerComponent,
     DiscussionsComponent,
-    DiscussionViewerSingleComponent
+    DiscussionViewerSingleComponent,
+    AnswerableSectionComponent
   ],
   providers: [CourseDetailResolver],
   imports: [

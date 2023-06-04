@@ -11,16 +11,7 @@ import { CourseService } from 'src/app/main/services/course.service';
   styleUrls: ['./discussion-viewer-single.component.css'],
 })
 export class DiscussionViewerSingleComponent {
-  discussion: string = 'Discussion content goes here';
-  exercise: Exercise = {
-    _id: '',
-    discussionId: '',
-    exerciseDetails: 'Exercise details',
-    exerciseName: 'Exercise name',
-    exercise_status: '',
-    instructions: 'Exercise instructions',
-    points: '10',
-  };
+
   showExercise: boolean = false;
   moduleDiscussionResult?: ModuleDiscussionResult;
   constructor(private activatedRoute: ActivatedRoute, private courseService: CourseService) {
@@ -28,11 +19,23 @@ export class DiscussionViewerSingleComponent {
       const { moduleId, page } = x;
       this.courseService
         .getModuleDiscussionByPage(moduleId, page)
-        .subscribe((x) => this.moduleDiscussionResult = x);
+        .subscribe((x) => {
+           if (this.showExercise == true) {
+             this.showExercise = false;
+           }
+          this.moduleDiscussionResult = x;
+        });
     });
   }
 
-  toggleExerciseContent(): void {
+  replaceQBlank(input: string) {
+        return input.replace('[q-blank]', '__');
+  }
+
+  toggleExerciseContent(discussionId?: string): void {
     this.showExercise = !this.showExercise;
+    //if(discussionId)
+    //this.courseService.getExerciseByDiscussionId(discussionId).subscribe(x => console.log(x));
+
   }
 }

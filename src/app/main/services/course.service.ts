@@ -34,8 +34,10 @@ export class CourseService {
     return this.http.get<Module[]>(url);
   }
 
-  getExerciseByDiscussionId(id: string): Observable<Exercise> {
-    const url = `${this.baseUrl}/students/course/discussion/${id}/exercise`;
+  getExerciseByDiscussionId(
+    discussionId: string
+  ): Observable<Exercise> {
+    const url = `${this.baseUrl}/students/course/discussion/${discussionId}/exercise`;
     return this.http.get<Exercise>(url);
   }
 

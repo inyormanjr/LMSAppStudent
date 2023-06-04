@@ -27,4 +27,15 @@ export interface Exercise {
   instructions: string;
   points: string;
   exercise_status: string;
+  studentAnswer?: ExerciseAnswer;
+}
+
+export interface ExerciseAnswer {
+  _id: any;
+  exercise: any;
+  answer: string;
+  points: number;
+  student: any;
+  createdAt: Date;
+  updatedAt: Date;
 }

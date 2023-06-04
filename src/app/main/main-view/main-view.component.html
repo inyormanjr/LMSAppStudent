@@ -1,8 +1,11 @@
-<div class="h-100 d-flex flex-column ">
+<div class="h-100 d-flex flex-column">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid ">
-      <a class="navbar-brand" [routerLink]="'dashboard'"><img src="../../../assets/ccs_logo.png" height="35"
-        width="35" alt="Profile Image" class="profile-image rounded-circle"> CCSCAI</a>
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="'dashboard'">
+        <img src="../../../assets/ccs_logo.png" height="35" width="35" alt="Profile Image"
+          class="profile-image rounded-circle">
+        CCSCAI
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -18,14 +21,15 @@
         </ul>
       </div>
       <div class="me-4">
-      <app-nav-notification></app-nav-notification>
+        <app-nav-notification></app-nav-notification>
       </div>
       <div class="dropdown">
-      <button class="btn btn-secondary bg-transparent text-dark dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown"
-        aria-expanded="false">
-        <img src="https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-260nw-1714666150.jpg" height="35" width="35" alt="Profile Image" class="profile-image rounded-circle">
-        {{(this.currentUser$ | async)?.username }}
-      </button>
+        <button class="btn btn-secondary bg-transparent text-dark dropdown-toggle" type="button" id="profileDropdown"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-260nw-1714666150.jpg"
+            height="35" width="35" alt="Profile Image" class="profile-image rounded-circle">
+          {{ (this.currentUser$ | async)?.username }}
+        </button>
         <ul class="dropdown-menu bg-transparent dropdown-menu-end" aria-labelledby="profileDropdown">
           <li><a class="dropdown-item" href="#">Profile</a></li>
           <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -38,6 +42,6 @@
     </div>
   </nav>
   <div class="content flex-fill h-100 overflow-auto">
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   </div>
 </div>
