@@ -14,6 +14,7 @@ import { user_token_storage } from './cons.vars';
 import { environment } from 'src/environments/environment';
 import { AuthGuard } from './guards/auth.guard';
 import { ModalService } from './services/modal.service';
+import { BotSocketService } from './main/services/bot-socket-service.service';
 
 export function tokenGetter() {
   const token = localStorage.getItem(user_token_storage);
@@ -43,7 +44,7 @@ export function tokenGetter() {
     }),
     EffectsModule.forRoot([AuthEffects]),
   ],
-  providers: [AuthGuard, ModalService],
+  providers: [AuthGuard, ModalService, BotSocketService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
