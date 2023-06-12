@@ -12,7 +12,7 @@ export class DashboardEffectEffects {
     this.actions$.pipe(
       ofType(dashboardCoursesActions['loadDashboardCourses']),
       mergeMap(({ studentId }) =>
-        this.courseService.getCoursesByStudentId(studentId).pipe(
+        this.courseService.getCoursesByStudentId().pipe(
           map((courses) =>
             dashboardCoursesActions['loadDashboardCoursesSuccess']({
               courses,

@@ -1,0 +1,102 @@
+<div *ngIf="currentCourse" class="container-fluid pt-4">
+  <div class="card border-white bg-transparent mb-4">
+    <div class="card-body">
+      <h2 class="card-title">{{ currentCourse.course }}</h2>
+      <h4 class="card-subtitle mb-2 text-muted">{{ currentCourse.courseCode }}</h4>
+      <p class="card-text">Instructor: {{ currentCourse.instructor.name }}</p>
+    </div>
+  </div>
+
+  <ul class="nav nav-tabs" id="courseTabs" role="tablist" *ngIf="modules && modules.length > 0">
+    <ng-container *ngFor="let module of modules; let i = index">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" [class.active]="i === activeModuleIndex" [id]="'module-tab-' + i" data-bs-toggle="tab"
+          [attr.data-bs-target]="'#module-' + i" type="button" role="tab" [attr.aria-controls]="'module-' + i"
+          [attr.aria-selected]="i === activeModuleIndex">
+          <i class="bi bi-book-fill me-2"></i>{{ module.module }}
+        </button>
+      </li>
+    </ng-container>
+  </ul>
+
+  <div class="tab-content mt-4" id="courseTabsContent" *ngIf="modules && modules.length > 0">
+    <ng-container *ngFor="let module of modules; let i = index">
+      <div class="tab-pane fade" [class.show.active]="i === activeModuleIndex" [id]="'module-' + i" role="tabpanel"
+        [attr.aria-labelledby]="'module-tab-' + i" *ngIf="module">
+        <h5>{{ module.module }}</h5>
+
+        <ul class="nav nav-tabs" id="moduleTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="discussions-tab" data-bs-toggle="tab"
+              [attr.data-bs-target]="'#discussions-' + i" type="button" role="tab"
+              [attr.aria-controls]="'discussions-' + i" [attr.aria-selected]="true">
+              <i class="bi bi-chat-dots-fill me-2"></i>Discussions
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="assessments-tab" data-bs-toggle="tab"
+              [attr.data-bs-target]="'#assessments-' + i" type="button" role="tab"
+              [attr.aria-controls]="'assessments-' + i" [attr.aria-selected]="false">
+              <i class="bi bi-check-square-fill me-2"></i>Assessments
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="resources-tab" data-bs-toggle="tab" [attr.data-bs-target]="'#resources-' + i"
+              type="button" role="tab" [attr.aria-controls]="'resources-' + i" [attr.aria-selected]="false">
+              <i class="bi bi-folder-fill me-2"></i>Resources
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content mt-4" id="moduleTabsContent">
+          <div class="tab-pane fade show active" [id]="'discussions-' + i" role="tabpanel"
+            [attr.aria-labelledby]="'discussions-tab-' + i" *ngIf="module.discussions">
+            <div class="list-group">
+              <button [routerLink]="['../../module',module._id,'discussion',discussion.page]" class="list-group-item border-white bg-transparent list-group-item-action"
+                *ngFor="let discussion of module.discussions">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="mb-0">{{ discussion.title }}</h6>
+                  <button class="btn btn-link" type="button">
+                    <i class="bi bi-arrow-right"></i>
+                  </button>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" [id]="'assessments-' + i" role="tabpanel"
+            [attr.aria-labelledby]="'assessments-tab-' + i" *ngIf="module.assessments">
+            <div class="list-group">
+              <a href="#" class="list-group-item border-white bg-transparent list-group-item-action"
+                *ngFor="let assessment of module.assessments">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="mb-0">{{ assessment.assessmentName }}</h6>
+                  <button class="btn btn-link" type="button">
+                    <i class="bi bi-arrow-right"></i>
+                  </button>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" [id]="'resources-' + i" role="tabpanel"
+            [attr.aria-labelledby]="'resources-tab-' + i" >
+            <div class="list-group">
+              <!-- <a href="#" class="list-group-item border-white bg-transparent list-group-item-action"
+                *ngFor="let resource of module.resources">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="mb-0">{{ resource.title }}</h6>
+                  <button class="btn btn-link" type="button">
+                    <i class="bi bi-arrow-right"></i>
+                  </button>
+                </div>
+                <p class="mb-0">{{ resource.description }}</p>
+              </a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+</div>
