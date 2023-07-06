@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MainViewComponent } from './main-view/main-view.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NavNotificationComponent } from './components/nav-notification/nav-notification.component';
-import { ChatbotComponent } from './components/chatbot/chatbot.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -34,7 +33,6 @@ const route: Routes = [
   declarations: [
     MainViewComponent,
     NavNotificationComponent,
-    ChatbotComponent,
   ],
   imports: [
     CommonModule,

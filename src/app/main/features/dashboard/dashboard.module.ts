@@ -13,6 +13,8 @@ import { CourseListCardComponent } from './components/course-list-card/course-li
 import { DashboardExercisesListCardComponent } from './components/dashboard-exercises-list-card/dashboard-exercises-list-card.component';
 import { DashboardInfoListCardComponent } from './components/dashboard-info-list-card/dashboard-info-list-card.component';
 import { DashboardAnnouncementBoardCardComponent } from './components/dashboard-announcement-board-card/dashboard-announcement-board-card.component';
+import { ChatbotComponent } from '../../components/chatbot/chatbot.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 const route: Routes = [{path: '', component: DashboardViewComponent}];
@@ -20,14 +22,26 @@ const route: Routes = [{path: '', component: DashboardViewComponent}];
   declarations: [
     DashboardViewComponent,
     DashboardCourseCardComponent,
+    ChatbotComponent,
     DashboardAnnouncementCardComponent,
     DashboardAnnouncementItemCardComponent,
     CourseListCardComponent,
     DashboardExercisesListCardComponent,
     DashboardInfoListCardComponent,
-    DashboardAnnouncementBoardCardComponent
+    DashboardAnnouncementBoardCardComponent,
   ],
   exports: [],
-  imports: [CommonModule, RouterModule.forChild(route), StoreModule.forFeature(fromDashboardStore.dashboardStoreFeatureKey, fromDashboardStore.reducers, { metaReducers: fromDashboardStore.metaReducers }), EffectsModule.forFeature([DashboardEffectEffects])],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(route),
+    StoreModule.forFeature(
+      fromDashboardStore.dashboardStoreFeatureKey,
+      fromDashboardStore.reducers,
+      { metaReducers: fromDashboardStore.metaReducers }
+    ),
+    EffectsModule.forFeature([DashboardEffectEffects]),
+  ],
 })
 export class DashboardModule {}
