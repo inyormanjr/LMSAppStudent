@@ -24,7 +24,16 @@
               <div class="invalid-feedback">Please enter your password.</div>
             </div>
             <div class="container-fluid d-flex justify-content-center">
-              <button type="submit" class="btn btn-primary mb-2 neo-btn text-dark">Sign-in</button>
+              <button type="submit" class="btn btn-primary mb-2 neo-btn text-dark">
+                <ng-container *ngIf="isLoading$ | async as isLoading; else elseNotLoading">
+                  <span  class="spinner-border spinner-border-sm" role="status"
+                    aria-hidden="true"></span>
+                </ng-container>
+                <ng-template #elseNotLoading>
+                  <span>Login</span>
+                </ng-template>
+
+              </button>
             </div>
           </form>
         </div>

@@ -1,8 +1,8 @@
+import { mainStateSelectors } from 'src/app/main-feature/selectors/main-selector.selectors';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { MainStoreState } from 'src/app/main-feature/reducers';
-import { selectCurrentUser } from 'src/app/main-feature/selectors/main-selector.selectors';
 import { Course } from 'src/app/main/models/course';
 import { UserTokenDecodedModel } from 'src/app/models/user.decoded.model';
 import { dashboardCoursesActions } from '../ngrx/actions/dashboard-actions.actions';
@@ -45,7 +45,7 @@ export class DashboardViewComponent implements OnInit {
 
   courses$: Observable<Course[]>;
   constructor(private store: Store<MainStoreState>) {
-    this.currentUser$ = this.store.select(selectCurrentUser);
+    this.currentUser$ = this.store.select(mainStateSelectors.selectCurrentUser);
 
     this.currentUser$.subscribe((x) => {
       this.store.dispatch(

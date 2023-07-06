@@ -26,8 +26,8 @@ export class AuthEffects {
       ofType(login),
       exhaustMap((action) =>
         this.authService.login(action.username, action.password).pipe(
-          map((authResponse: AuthResponseModel) =>
-            loginSuccess({
+          map((authResponse: AuthResponseModel) => 
+             loginSuccess({
               user: this.authService.decodeToken(authResponse.token),
             })
           ),
