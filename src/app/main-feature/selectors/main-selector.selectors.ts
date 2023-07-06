@@ -3,16 +3,18 @@ import { MainStoreState, mainStoreFeatureKey } from '../reducers';
 
 
 // Create a feature selector for the auth state
-const selectAuthState =
+const selectMainState =
   createFeatureSelector<MainStoreState>(mainStoreFeatureKey);
 
 // Create a selector to get the currentUser from the auth state
-export const selectCurrentUser = createSelector(
-  selectAuthState,
+ const selectCurrentUser = createSelector(
+  selectMainState,
   (state: MainStoreState) => state.currentUser
 );
 
-export const selectisLoading = createSelector(
-  selectAuthState,
+ const selectisLoading = createSelector(
+  selectMainState,
   (state: MainStoreState) => state.isLoading
-);
+ );
+
+ export const mainStateSelectors = { selectCurrentUser, selectisLoading };

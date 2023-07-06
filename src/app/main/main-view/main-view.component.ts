@@ -1,9 +1,9 @@
+import { mainStateSelectors } from './../../main-feature/selectors/main-selector.selectors';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { MainStoreState } from 'src/app/main-feature/reducers';
-import { selectCurrentUser, selectisLoading } from 'src/app/main-feature/selectors/main-selector.selectors';
 import { UserTokenDecodedModel } from 'src/app/models/user.decoded.model';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -16,8 +16,8 @@ export class MainViewComponent implements OnInit {
   currentUser$: Observable<UserTokenDecodedModel | null>;
   isLoading$: Observable<boolean>;
   constructor(private store: Store<MainStoreState>, private authService: AuthService, private router: Router) {
-    this.currentUser$ = this.store.select(selectCurrentUser);
-    this.isLoading$ = this.store.select(selectisLoading);
+    this.currentUser$ = this.store.select(mainStateSelectors.selectCurrentUser);
+    this.isLoading$ = this.store.select(mainStateSelectors.selectisLoading);
   }
   ngOnInit(): void { }
 

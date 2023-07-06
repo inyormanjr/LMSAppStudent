@@ -3,10 +3,12 @@ import { UserTokenDecodedModel } from 'src/app/models/user.decoded.model';
 
 
 // Define your actions
-export const setLoading = createAction('[Main Store] Set Loading');
-export const setLoaded = createAction('[Main Store] Set Loaded');
-export const setCurrentUser = createAction(
+ const setLoading = createAction('[Main Store] Set Loading');
+ const setLoaded = createAction('[Main Store] Set Loaded');
+ const setCurrentUser = createAction(
   '[Main Store] Set Current User',
   (user: UserTokenDecodedModel) => ({ user })
 );
-export const clearCurrentUser = createAction('[Main Store] Clear Current User');
+const clearCurrentUser = createAction('[Main Store] Clear Current User');
+
+export const MainActions = {setLoading, setLoaded, setCurrentUser, clearCurrentUser};

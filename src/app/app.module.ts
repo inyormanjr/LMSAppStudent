@@ -14,7 +14,7 @@ import { user_token_storage } from './cons.vars';
 import { AuthGuard } from './guards/auth.guard';
 import { ModalService } from './services/modal.service';
 import { BotSocketService } from './main/services/bot-socket-service.service';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxModule } from './shared/ngx/ngx.module';
