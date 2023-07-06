@@ -5,8 +5,9 @@ import { Observable, map } from 'rxjs';
 import { AuthResponseModel } from '../models/auth.response.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserTokenDecodedModel } from '../models/user.decoded.model';
-import { environment } from 'src/environments/environment';
+
 import { user_token_storage } from '../cons.vars';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',

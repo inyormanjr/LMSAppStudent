@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { ChatBotMessage } from './chatbot.message';
 import { BotSocketService } from '../../services/bot-socket-service.service';
-import { delay } from 'rxjs';
+import { async, delay } from 'rxjs';
 
 @Component({
   selector: 'app-chatbot',
@@ -29,6 +29,7 @@ export class ChatbotComponent implements AfterViewInit {
     const response: ChatBotMessage = {
       isChatbot: true,
       message: 'Welcome to CCSCAI Chatbot.',
+      isFetching: false,
     };
     this.messages.push(response);
   }
@@ -58,32 +59,53 @@ export class ChatbotComponent implements AfterViewInit {
       const message: ChatBotMessage = {
         isChatbot: false,
         message: this.newMessage,
+        isFetching: false,
       };
       this.messages.push(message);
       this.isFetchingResponse = true;
 
       // Process user's message and get chatbot's response
       this.chatbotService.sendMessage(message.message);
-
+      this.createFetchingMessage();
       // Simulate a delay of 2 seconds before receiving the reply
       this.chatbotService.receivedReply()
-        .pipe(delay(2000)) // Delay of 2 seconds
         .subscribe((x) => {
-          const response: ChatBotMessage = {
-            isChatbot: true,
-            message: x.outputMessage,
-          };
-          this.messages.push(response);
-          this.isFetchingResponse = false;
-          this.newMessage = '';
+          setTimeout(() => {
+            this.removeisFetchingMessageFromMessages();
+            const response: ChatBotMessage = {
+              isChatbot: true,
+              message: x.outputMessage,
+              isFetching: false,
+            };
+            this.messages.push(response);
+            // Scroll to bottom after receiving the reply
+            this.cdr.detectChanges();
+            this.scrollToBottom();
+            this.isFetchingResponse = false;
+            this.newMessage = '';
+          }, 3000);
 
-          // Scroll to bottom after receiving the reply
-          this.cdr.detectChanges();
-          this.scrollToBottom();
         });
     }
   }
+
+  createFetchingMessage() {
+    const message: ChatBotMessage = {
+      isChatbot: true,
+      message: '...',
+      isFetching: true,
+    };
+    this.messages.push(message);
+  }
+
+  removeisFetchingMessageFromMessages() {
+    this.messages = this.messages.filter((message) => {
+      return !message.isFetching;
+    });
+  }
 }
+
+
 
 function processChatbotResponse(userMessage: string): string {
   // Process user's message and generate chatbot's response
