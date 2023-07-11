@@ -30,8 +30,28 @@ export class ChatbotComponent implements AfterViewInit {
       isChatbot: true,
       message: 'Welcome to CCSCAI Chatbot.',
       isFetching: false,
+      isAction: false,
     };
     this.messages.push(response);
+
+    // Simulate a delay of 2 seconds before receiving the reply
+    this.chatbotService.receivedReply().subscribe((x) => {
+      setTimeout(() => {
+        this.removeisFetchingMessageFromMessages();
+        const response: ChatBotMessage = {
+          isChatbot: true,
+          message: x.outputMessage,
+          isFetching: false,
+          isAction: false
+        };
+        this.messages.push(response);
+        // Scroll to bottom after receiving the reply
+        this.cdr.detectChanges();
+        this.scrollToBottom();
+        this.isFetchingResponse = false;
+        this.newMessage = '';
+      }, 3000);
+    });
   }
 
   toggleChatbox(): void {
@@ -60,32 +80,15 @@ export class ChatbotComponent implements AfterViewInit {
         isChatbot: false,
         message: this.newMessage,
         isFetching: false,
+        isAction: false,
       };
       this.messages.push(message);
+      this.newMessage = '';
       this.isFetchingResponse = true;
 
       // Process user's message and get chatbot's response
       this.chatbotService.sendMessage(message.message);
       this.createFetchingMessage();
-      // Simulate a delay of 2 seconds before receiving the reply
-      this.chatbotService.receivedReply()
-        .subscribe((x) => {
-          setTimeout(() => {
-            this.removeisFetchingMessageFromMessages();
-            const response: ChatBotMessage = {
-              isChatbot: true,
-              message: x.outputMessage,
-              isFetching: false,
-            };
-            this.messages.push(response);
-            // Scroll to bottom after receiving the reply
-            this.cdr.detectChanges();
-            this.scrollToBottom();
-            this.isFetchingResponse = false;
-            this.newMessage = '';
-          }, 3000);
-
-        });
     }
   }
 
@@ -94,6 +97,7 @@ export class ChatbotComponent implements AfterViewInit {
       isChatbot: true,
       message: '...',
       isFetching: true,
+      isAction: false
     };
     this.messages.push(message);
   }

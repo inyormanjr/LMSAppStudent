@@ -15,14 +15,17 @@ export class BotSocketService {
   }
 
   receivedReply(): Observable<any> {
-    const observable = new Observable<any>((observer) => {
-      this.socket.on('reply', (data) => {
+    return new Observable<any>((observer) => {
+      const replyHandler = (data: any) => {
         observer.next(data);
-      });
-      return () => {
+      };
+
+      this.socket.on('reply', replyHandler);
+      const cleanup = () => {
+        this.socket.off('reply', replyHandler);
         this.socket.disconnect();
       };
+      return cleanup;
     });
-    return observable;
   }
 }
